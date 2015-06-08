@@ -1,0 +1,52 @@
+login form: https://www.packtpub.com/packt/offers/free-learning#
+login params: in file
+
+
+Remote Address:83.166.169.231:443
+Request URL:https://www.packtpub.com/account/password
+Request Method:POST
+Status Code:302 Found
+
+Response Headers
+view source
+Accept-Ranges:bytes
+Age:0
+Cache-Control:store, no-cache, must-revalidate, post-check=0, pre-check=0
+Connection:keep-alive
+Content-Length:0
+Content-Type:text/html; charset=utf-8
+Date:Mon, 08 Jun 2015 12:00:34 GMT
+Expires:Sun, 19 Nov 1978 05:00:00 GMT
+Location:https://www.packtpub.com/account/password
+Server:nginx/1.4.5
+Set-Cookie:SESS_live=deleted; expires=Sun, 08-Jun-2014 12:00:32 GMT; path=/
+Set-Cookie:SESS_live=je4ijm2c3d0qa02curpfi2fj53; expires=Thu, 11-Jun-2015 12:00:33 GMT; path=/; domain=.packtpub.com
+Via:1.1 varnish
+X-Country-Code:PL
+
+Request Headers
+view source
+Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Encoding:gzip, deflate
+Accept-Language:pl-PL,pl;q=0.8,en-US;q=0.6,en;q=0.4
+Cache-Control:no-cache
+Connection:keep-alive
+Content-Length:194
+Content-Type:application/x-www-form-urlencoded
+Cookie:__logged_in=0; _vis_opt_s=1%7C; _vis_opt_test_cookie=1; _vwo_uuid=A654887B16B78CCE8A460FBFD03E6075; _vis_opt_exp_87_combi=4; _hjIncludedInSample=1; _hjUserId=54ea539a-b8fd-45b5-be77-fec94273b51b; SESS_live=bskalr305qegnjg7eqe25goe92; _gat=1; _gat_UA-284627-6=1; __logged_in=0; _gat_UA-284627-1=1; __has_js=1; _ga=GA1.2.667243060.1432906622
+DNT:1
+Host:www.packtpub.com
+Origin:https://www.packtpub.com
+Pragma:no-cache
+Referer:https://www.packtpub.com/account/password
+User-Agent:Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/537.36
+
+
+Form Data
+view source
+view URL encoded
+email:${login}
+password: ${hashed probably, not plain}
+op:Login
+form_build_id:form-2c9d471d6caac791063fc1780c2e1ce0
+form_id:packt_user_login_form
