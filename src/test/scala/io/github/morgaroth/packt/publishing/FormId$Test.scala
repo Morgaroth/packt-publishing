@@ -12,16 +12,15 @@ import scala.language.postfixOps
 
 class FormId$Test extends WordSpec with Matchers with Futures {
 
-  val savedhtml: String = Source.fromURL(getClass.getResource("/packt_pub.html")).mkString
-
   "FormId extractor" should {
     "extract form id from saved html" in {
+      val savedhtml = Source.fromURL(getClass.getResource("/packt_pub.html")).mkString
       savedhtml match {
         case FormId(id) => id should equal("bac250255949cd17f80df224dea24bce")
         case another => fail(s"not extracted form id")
       }
     }
-    "extract form id from live html" in {
+    "extract form token from live html" in {
       implicit val ac = ActorSystem("test")
       import ac.dispatcher
 
