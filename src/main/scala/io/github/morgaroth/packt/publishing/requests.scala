@@ -1,6 +1,8 @@
 package io.github.morgaroth.packt.publishing
 
 import spray.client.pipelining._
+import spray.http.HttpHeaders.Cookie
+import spray.http.{HttpRequest, HttpCookie, HttpHeaders, FormData}
 
 import scala.util.matching.Regex.Match
 
@@ -9,27 +11,24 @@ object SiteIndex {
 }
 
 object LoginPost {
-  def request = Post("https://www.packtpub.com/")
+  def request(data: LoginData) =
+    Post("https://www.packtpub.com/", FormData(Map(
+      "email" -> data.email,
+      "password" -> data.password,
+      "form_build_id" -> data.formId.token,
+      "form_id" -> data.formId.id,
+      "op" -> "Login"
+    )))
 }
 
-object FormId {
-  val formTokenR = """.*<input type="hidden" name="form_token" id="edit\-packt\-user\-login\-form\-form\-token" value="(.*)".*""".r
-  val regex2 = """.*<input type="hidden" name="form_build_id" id="(.*)" value="(.*)">.*""".r
+object FreeBookIndex {
+  def request =
+    Get("https://www.packtpub.com/packt/offers/free-learning")
+}
 
-  def unapply(html: String): Option[String] = {
-    val formToken: List[Match] = formTokenR.findAllMatchIn(html).toList
-    val token = formToken match {
-      case formTokenR(id) :: Nil => Some(id)
-      case _ => None
-    }
-    val formBuild: List[Match] = regex2.findAllMatchIn(html).toList
-    val build = formBuild match {
-      case regex2(id, id2) :: Nil if id == id2 => Some(id)
-      case regex2(id, id2) :: Nil =>
-        // todo warning
-        Some(id2)
-      case _ => None
-    }
-    token
+object FreeBookPost {
+  def request(data: UserInfo, book: FreeBook): HttpRequest = {
+    Get(s"http://www.packtpub.com${book.link}")
+      .withHeaders(Cookie(HttpCookie("SESS_live", data.sessionToken)))
   }
 }
